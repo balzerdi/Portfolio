@@ -47,20 +47,22 @@ const ImageContainer = styled.div`
         transition-delay: 0ms;
     }
 
-    & img {
-        transition: transform 300ms ease-in-out;
-        transition-delay: 0ms;
-    }
-
-    &:hover {
-        &>p {
-            opacity: 1;
-            transition-delay: 3300ms;
+    @media (hover: hover) {
+        & img {
+            transition: transform 300ms ease-in-out;
+            transition-delay: 0ms;
         }
 
-        & img {
-            transform: scale(3.5) translate(16%, 19%);
-            transition-delay: 3000ms;
+        &:hover {
+            &>p {
+                opacity: 1;
+                transition-delay: 3300ms;
+            }
+
+            & img {
+                transform: scale(3.5) translate(16%, 19%);
+                transition-delay: 3000ms;
+            }
         }
     }
 `
