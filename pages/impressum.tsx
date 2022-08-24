@@ -2,14 +2,22 @@ import Head from "next/head";
 import React from "react";
 import styled from "styled-components";
 import Wrapper from '../components/atoms/Wrapper'
+import { Device } from "../devices";
 
 export const Container = styled.div`
-    padding: 64px;
-    border-radius: 32px;
+    padding: 24px;
+    border-radius: 16px;
     background-color: #F3F3F3;
     display: flex;
     flex-direction: column;
-    margin: 64px 0;
+    margin: 24px 0;
+    overflow-x: hidden;
+
+    @media ${Device.laptop} {
+        padding: 64px;
+        margin: 64px 0;
+        border-radius: 32px;
+    }
 `
 
 export const Title = styled.h1`
@@ -32,7 +40,7 @@ export const Body = styled.p`
     margin-bottom: 48px;
 `
 
-const Impress = () => {
+const Imprint = () => {
 
     return (
         <>
@@ -66,7 +74,7 @@ const Impress = () => {
                         Herrfurthstraße 3<br/>
                         12049 Berlin
                     </Body>
-                    <Heading>Verbraucherstreitbeilegung/Universalschlichtungsstelle</Heading>
+                    <Heading>Verbraucherstreitbeilegung/ Universalschlichtungsstelle</Heading>
                     <Body>  
                         Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren<br/>
                         vor einer Verbraucherschlichtungsstelle teilzunehmen.
@@ -78,4 +86,4 @@ const Impress = () => {
     )
 }
 
-export default Impress
+export default Imprint
