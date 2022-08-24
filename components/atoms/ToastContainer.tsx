@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { Device } from "../../devices";
 import { RootState } from "../../redux/store";
 import Toast from "./Toast";
 
@@ -14,7 +15,11 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: visible;
+    overflow-x: hidden;
+
+    @media ${Device.tablet} {
+        overflow-x: visible;
+    }
 `
 
 const ToastContainer = () => {

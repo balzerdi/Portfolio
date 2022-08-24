@@ -3,10 +3,12 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { remove } from "../../redux/toastSlices";
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { Device } from "../../devices";
+import Wrapper from "./Wrapper";
 
 const Container = styled.div`  
     position: relative;
-    padding: 8px 32px;
+    padding: 6px 16px;
     background-color: #111;
     color: white;
     box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.25);
@@ -22,11 +24,19 @@ const Container = styled.div`
 
     &> span {
         position: absolute;
-        right: 8px;
+        right: 2px;
         top: 50%;
         transform: translateY(-40%);
         color: #111;
         transition: color 300ms ease-in;
+
+        @media ${Device.tablet} {
+            right: 8px;
+        }
+    }
+
+    @media ${Device.tablet} {
+        padding: 8px 32px;
     }
 `
 
@@ -36,7 +46,11 @@ const Body = styled.div`
     text-align: center;
     letter-spacing: 0.05rem;
     font-weight: 400;
-    white-space: nowrap;
+    white-space: normal;
+
+    @media ${Device.tablet} {
+        white-space: nowrap;
+    }
 `
 
 const Toast = ({ label, id } : {
@@ -55,12 +69,14 @@ const Toast = ({ label, id } : {
     }, [])
 
     return (
-        <Container onClick={() => dispatch(remove(id)) } onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} >
-            <Body>{ label }</Body>
-            <span>
-                <CloseOutlinedIcon fontSize='inherit' style={{ color: hover ? 'white' : '#111' }} />
-            </span>
-        </Container>
+        <Wrapper>
+            <Container onClick={() => dispatch(remove(id)) } onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} >
+                <Body>{ label }</Body>
+                <span>
+                    <CloseOutlinedIcon fontSize='inherit' style={{ color: hover ? 'white' : '#111' }} />
+                </span>
+            </Container>
+        </Wrapper>
     )
 }
 
