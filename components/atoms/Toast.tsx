@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { remove } from "../../redux/toastSlices";
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { Device } from "../../devices";
-import Wrapper from "./Wrapper";
 
 const Container = styled.div`  
     position: relative;
@@ -69,14 +68,12 @@ const Toast = ({ label, id } : {
     }, [])
 
     return (
-        <Wrapper>
-            <Container onClick={() => dispatch(remove(id)) } onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} >
-                <Body>{ label }</Body>
-                <span>
-                    <CloseOutlinedIcon fontSize='inherit' style={{ color: hover ? 'white' : '#111' }} />
-                </span>
-            </Container>
-        </Wrapper>
+        <Container onClick={() => dispatch(remove(id)) } onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} >
+            <Body>{ label }</Body>
+            <span>
+                <CloseOutlinedIcon fontSize='inherit' style={{ color: hover ? 'white' : '#111' }} />
+            </span>
+        </Container>
     )
 }
 
