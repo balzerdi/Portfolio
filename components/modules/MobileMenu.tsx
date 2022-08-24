@@ -76,10 +76,12 @@ const MobileMenu = () => {
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden'
+            document.body.style.position = 'fixed'
             window.scrollTo(0, 0)
             containerRef.current?.setAttribute('display', 'flex')
         } else {
             document.body.style.overflow = 'unset'
+            document.body.style.position = 'static'
             setTimeout(() => {
                 containerRef.current?.setAttribute('display', 'none')
             }, 800);
@@ -93,7 +95,7 @@ const MobileMenu = () => {
                 <div />
                 <div />
             </Burger>
-            <Container ref={containerRef}> {/* Wholescreen Container */}
+            <Container ref={containerRef} onClick={() => setOpen(false)} > {/* Wholescreen Container */}
                 <Sidebar isOpen={isOpen}> {/* Sidecontainer */}
                     <MobileLink 
                         label='My Work'
